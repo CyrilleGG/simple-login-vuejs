@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <router-link v-if="auth" to="/" v-on:click.native="logout()" replace>Logout</router-link>
-    <router-view @auth="setAuth" />
+    <router-view />
   </div>
 </template>
 
@@ -13,23 +12,7 @@ export default {
 
   data () {
     return {
-      auth: false,
       data
-    }
-  },
-
-  mounted () {
-    if (!this.auth) {
-      this.$router.replace({name: 'login'})
-    }
-  },
-
-  methods: {
-    setAuth (status) {
-      this.auth = status
-    },
-    logout () {
-      this.auth = false
     }
   }
 }
