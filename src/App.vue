@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 import { data } from './db.js'
 
 export default {

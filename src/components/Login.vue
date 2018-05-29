@@ -26,6 +26,13 @@ export default {
     login () {
       if (this.input.username !== '' && this.input.password !== '') {
         console.log(this.input)
+        // this.axios.post('/login', input)
+        //   .then((response) => {
+        //     resolve(response)
+        //   })
+        //   .catch((error) => {
+        //     resolve(error)
+        //   })
       } else {
         console.log('Please, enter a username and a password')
       }
