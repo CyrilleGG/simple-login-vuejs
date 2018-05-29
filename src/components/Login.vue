@@ -4,12 +4,15 @@
     <form id="login-form">
       <input type="text" name="username" v-model="input.username" id="username" placeholder="Username">
       <input type="password" name="password" v-model="input.password" id="password" placeholder="Password">
-      <input type="submit" value="Login" v-on:click="login()">
+      <input type="submit" value="Login" v-on:click.prevent="login()">
     </form>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
 export default {
   name: 'Login',
   data () {
@@ -22,17 +25,27 @@ export default {
     }
   },
 
+  created () {
+    return new Promise((resolve, reject) => {
+        axios.get('http://localhost:3000')
+        .then((response) => {
+          resolve(response)
+        }).catch((error) => {
+          resolve(error)
+        })
+      })
+  },
+
   methods: {
     login () {
       if (this.input.username !== '' && this.input.password !== '') {
-        console.log(this.input)
-        // this.axios.post('/login', input)
-        //   .then((response) => {
-        //     resolve(response)
-        //   })
-        //   .catch((error) => {
-        //     resolve(error)
-        //   })
+        axios.post('http://localhost:3000/login', this.input)
+          .then((response) => {
+            console.log('Success!')
+          })
+          .catch((error) => {
+            console.log('NOPE')
+          })
       } else {
         console.log('Please, enter a username and a password')
       }
