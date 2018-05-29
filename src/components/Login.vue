@@ -25,17 +25,6 @@ export default {
     }
   },
 
-  created () {
-    return new Promise((resolve, reject) => {
-        axios.get('http://localhost:3000')
-        .then((response) => {
-          resolve(response)
-        }).catch((error) => {
-          resolve(error)
-        })
-      })
-  },
-
   methods: {
     login () {
       if (this.input.username !== '' && this.input.password !== '') {
