@@ -31,6 +31,7 @@ export default {
         axios.post('http://localhost:3000/login', this.input)
           .then((response) => {
             console.log('Success!')
+            this.$router.replace({name: 'welcome'})
           })
           .catch((error) => {
             console.log('NOPE')
